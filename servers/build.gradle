@@ -19,3 +19,19 @@ dependencies {
 //        downloadSources = true
 //    }
 //}
+
+task uberjar(type: Jar, dependsOn:jar/*,dependsOn:[':compileJava',':compileGroovy'*/) {
+    from files(sourceSets.main.output.classesDir)
+    from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+    exclude "META-INF/*.SF"
+    exclude "META-INF/*.RSA"
+
+    manifest {
+        attributes(
+                'Create-By': System.getProperty('java.version'),
+                'Main-Class': 'Hosts',
+                'Build-Version': version,
+                'Build-Date': new Date()
+        )
+    }
+}
