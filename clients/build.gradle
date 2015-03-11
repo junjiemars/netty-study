@@ -6,8 +6,10 @@ version = '1.0'
 repositories {
     mavenCentral()
 //    maven {
-//        url ""
+//        // netty.io maven repo
+//        url "http://clinker.netty.io/nexus/content/repositories/snapshots"
 //    }
+    mavenLocal()
 }
 
 dependencies {

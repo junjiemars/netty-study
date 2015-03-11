@@ -12,7 +12,7 @@ import java.net.URI;
 /**
  * Created by junjie on 3/5/2015.
  */
-public class HttpXmlClient {
+public class NioHttpClient {
     public static void main(String[] args) throws Exception {
         URI uri = new URI("http://cn.bing.com");
         String scheme = uri.getScheme() == null ? "http" : uri.getScheme();
@@ -46,7 +46,7 @@ public class HttpXmlClient {
             Bootstrap b = new Bootstrap();
             b.group(group)
                     .channel(NioSocketChannel.class)
-                    .handler(new HttpXmlClientInitializer(sslCtx));
+                    .handler(new NioHttpClientInitializer(sslCtx));
 
             // Make the connection attempt.
             Channel ch = b.connect(host, port).sync().channel();

@@ -9,11 +9,11 @@ import io.netty.handler.ssl.SslContext;
  * Author: junjie
  * Date: 3/9/15.
  */
-public class HttpXmlClientInitializer  extends ChannelInitializer<SocketChannel> {
+public class NioHttpClientInitializer extends ChannelInitializer<SocketChannel> {
 
     private final SslContext sslCtx;
 
-    public HttpXmlClientInitializer(SslContext sslCtx) {
+    public NioHttpClientInitializer(SslContext sslCtx) {
         this.sslCtx = sslCtx;
     }
 
@@ -34,6 +34,6 @@ public class HttpXmlClientInitializer  extends ChannelInitializer<SocketChannel>
         // Uncomment the following line if you don't want to handle HttpContents.
         //p.addLast(new HttpObjectAggregator(1048576));
 
-        p.addLast(new HttpXmlClientHandler());
+        p.addLast(new NioHttpClientHandler());
     }
 }

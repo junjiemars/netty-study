@@ -6,7 +6,7 @@ import io.netty.util.CharsetUtil;
 /**
  * Created by junjie on 3/5/2015.
  */
-public class HttpXmlClientHandler extends SimpleChannelInboundHandler<HttpObject> {
+public class NioHttpClientHandler extends SimpleChannelInboundHandler<HttpObject> {
   @Override
   public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 //    super.exceptionCaught(ctx, cause);
