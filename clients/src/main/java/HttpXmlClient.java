@@ -1,7 +1,7 @@
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.*;
+import io.netty.channel.Channel;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.ssl.SslContext;
@@ -15,8 +15,8 @@ import java.net.URI;
 public class HttpXmlClient {
     public static void main(String[] args) throws Exception {
         URI uri = new URI("http://cn.bing.com");
-        String scheme = uri.getScheme() == null? "http" : uri.getScheme();
-        String host = uri.getHost() == null? "127.0.0.1" : uri.getHost();
+        String scheme = uri.getScheme() == null ? "http" : uri.getScheme();
+        String host = uri.getHost() == null ? "127.0.0.1" : uri.getHost();
         int port = uri.getPort();
         if (port == -1) {
             if ("http".equalsIgnoreCase(scheme)) {
@@ -72,12 +72,11 @@ public class HttpXmlClient {
             ch.closeFuture().sync();
         } catch (Exception e) {
             System.out.println(e);
-        }
-        finally {
+        } finally {
             // Shut down executor threads to exit.
             group.shutdownGracefully();
         }
-  }
+    }
 }
 
 
